@@ -3,7 +3,7 @@
 A collection of images taken with the Nikon D7500, showcasing part of my next monochrome exhibition.  
 
 ## 📸 Sample Images  
-[![Image 1](images/DSC_0116.jpg](https://github.com/Alex-F85-techcom/D7500-Monochrome-Showcase/blob/main/DSC_0116.jpg))  
+[![Image 1](images/DSC_0116.jpg]
 ![Image 2](images/DSC_0137.jpg)  
 ![Image 3](images/DSC_1480.jpg)  
 ![Image 4](images/DSC2486.jpg)  
