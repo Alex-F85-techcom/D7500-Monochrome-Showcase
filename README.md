@@ -4,11 +4,11 @@ A collection of images taken with the Nikon D7500, showcasing part of my next mo
 
 ## 📸 Sample Images  
 ![Sample Image](DSC_0116.jpg)
-![Image 2](images/DSC_0137.jpg)  
-![Image 3](images/DSC_1480.jpg)  
-![Image 4](images/DSC2486.jpg)  
-![Image 5](images/DSC4900.jpg)  
-![Image 6](images/photo6.jpg)  
+![Sample Image](DSC_0137.jpg)  
+![Sample Image](DSC_1480.jpg)  
+![Sample Image](DSC2486.jpg)  
+![Sample Image](DSC4900.jpg)  
+![Sample Image](photo6.jpg)  
 
 ## 📌 Key Features  
 - **📷 Sensor**: CMOS / APS-C (Not full-frame)  
