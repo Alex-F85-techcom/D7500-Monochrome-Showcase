@@ -3,36 +3,75 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Monochrome Showcase</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>Nikon D7500 Showcase</title>
+    <style>
+        body {
+            background-color: black;
+            text-align: center;
+            color: white;
+        }
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+            max-width: 900px;
+            margin: auto;
+        }
+        .gallery img {
+            width: 100%;
+            height: auto;
+            cursor: pointer;
+            border: 2px solid white;
+        }
+        #modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.9);
+            justify-content: center;
+            align-items: center;
+        }
+        #modal img {
+            max-width: 90%;
+            max-height: 90%;
+        }
+        #modal span {
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            font-size: 40px;
+            color: white;
+            cursor: pointer;
+        }
+    </style>
 </head>
 <body>
 
+    <h1>Nikon D7500 Showcase</h1>
     <div class="gallery">
-        <h1>Monochrome Photography Showcase</h1>
-        <div class="image-grid">
-            <img src="images/DSC_0116.jpg" alt="Photo 1" onclick="openLightbox(this)">
-            <img src="images/DSC_0137.jpg" alt="Photo 2" onclick="openLightbox(this)">
-            <img src="images/DSC_0714.jpg" alt="Photo 3" onclick="openLightbox(this)">
-            <img src="images/DSC_1480.jpg" alt="Photo 4" onclick="openLightbox(this)">
-            <img src="images/DSC_4900.jpg" alt="Photo 5" onclick="openLightbox(this)">
-            <img src="images/DSC_6258.jpg" alt="Photo 6" onclick="openLightbox(this)">
-        </div>
+        <img src="images/DSC_0116.jpg" onclick="openModal(this)">
+        <img src="images/DSC_0137.jpg" onclick="openModal(this)">
+        <img src="images/DSC_0714.jpg" onclick="openModal(this)">
+        <img src="images/DSC_1480.jpg" onclick="openModal(this)">
+        <img src="images/DSC_4900.jpg" onclick="openModal(this)">
+        <img src="images/DSC_6258.jpg" onclick="openModal(this)">
     </div>
 
-    <!-- Lightbox -->
-    <div id="lightbox" class="lightbox" onclick="closeLightbox()">
-        <img id="lightbox-img">
+    <div id="modal" onclick="closeModal()">
+        <span>&times;</span>
+        <img id="modalImg">
     </div>
 
     <script>
-        function openLightbox(img) {
-            document.getElementById('lightbox-img').src = img.src;
-            document.getElementById('lightbox').style.display = "flex";
+        function openModal(imgElement) {
+            document.getElementById("modalImg").src = imgElement.src;
+            document.getElementById("modal").style.display = "flex";
         }
-
-        function closeLightbox() {
-            document.getElementById('lightbox').style.display = "none";
+        function closeModal() {
+            document.getElementById("modal").style.display = "none";
         }
     </script>
 
