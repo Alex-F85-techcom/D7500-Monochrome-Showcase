@@ -1,78 +1,47 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nikon D7500 Showcase</title>
-    <style>
-        body {
-            background-color: black;
-            text-align: center;
-            color: white;
-        }
-        .gallery {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 10px;
-            max-width: 1200px;
-            margin: auto;
-        }
-        .gallery img {
-            width: 100%;
-            height: auto;
-            cursor: pointer;
-            border: 2px solid white;
-        }
-        #modal {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.9);
-            justify-content: center;
-            align-items: center;
-        }
-        #modal img {
-            max-width: 90%;
-            max-height: 90%;
-        }
-        #modal span {
-            position: absolute;
-            top: 20px;
-            right: 30px;
-            font-size: 40px;
-            color: white;
-            cursor: pointer;
-        }
-    </style>
-</head>
-<body>
+import React, { useState } from "react";
+import { motion } from "framer-motion";
+import { Button } from "@/components/ui/button";
 
-    <h1>Nikon D7500 Monochrome Showcase</h1>
-    <div class="gallery">
-        <img src="images/DSC_0116.jpg" onclick="openModal(this)">
-        <img src="images/DSC_0137.jpg" onclick="openModal(this)">
-        <img src="images/DSC_1480.jpg" onclick="openModal(this)">
-        <img src="images/DSC_2486.jpg" onclick="openModal(this)">
-        <img src="images/DSC_4900.jpg" onclick="openModal(this)">
+const images = [
+  "/images/DSC_0116.jpg",
+  "/images/DSC_0137.jpg",
+  "/images/DSC_0714.jpg",
+  "/images/DSC_1480.jpg",
+  "/images/DSC_4900.jpg",
+  "/images/DSC_6258.jpg",
+];
+
+const Slideshow = () => {
+  const [index, setIndex] = useState(0);
+
+  const nextSlide = () => setIndex((prev) => (prev + 1) % images.length);
+  const prevSlide = () => setIndex((prev) => (prev - 1 + images.length) % images.length);
+
+  return (
+    <div className="flex flex-col items-center w-full p-6">
+      <h1 className="text-3xl font-bold mb-2">Monochrome Images by Alexander Findlay</h1>
+      <h2 className="text-lg text-gray-600 mb-6">Sample of Six</h2>
+      
+      <div className="relative flex items-center w-full max-w-4xl overflow-hidden">
+        <Button onClick={prevSlide} className="absolute left-0 z-10 bg-gray-800 text-white p-2">&#8249;</Button>
+        
+        <div className="flex justify-center gap-4 w-full">
+          {images.map((src, i) => (
+            <motion.img
+              key={src}
+              src={src}
+              alt={`Slide ${i + 1}`}
+              className={`w-1/4 transition-all duration-300 rounded-lg shadow-lg ${
+                i === index ? "w-1/2 scale-110" : "opacity-50"
+              }`}
+            />
+          )).slice(index, index + 3)}
+        </div>
+        
+        <Button onClick={nextSlide} className="absolute right-0 z-10 bg-gray-800 text-white p-2">&#8250;</Button>
+      </div>
     </div>
+  );
+};
 
-    <div id="modal" onclick="closeModal()">
-        <span>&times;</span>
-        <img id="modalImg">
-    </div>
-
-    <script>
-        function openModal(imgElement) {
-            document.getElementById("modalImg").src = imgElement.src;
-            document.getElementById("modal").style.display = "flex";
-        }
-        function closeModal() {
-            document.getElementById("modal").style.display = "none";
-        }
-    </script>
-
-</body>
-</html>
+export default Slideshow;
